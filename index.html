@@ -116,10 +116,19 @@ footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-t
 <script>
 const $=id=>document.getElementById(id);
 
-// تهيئة الاتصال بـ Supabase
+// تهيئة الاتصال بـ Supabase باستعمال المفتاح الخاص بك
 const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0aGxkcmhhaXJkaHVpdHJtemZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0MjE2MzgsImV4cCI6MjA4ODk5NzYzOH0.N94r3A8G0f3B6s5Z2l3K4J5H6G7F8E9D0C1B2A3B4C5'; // مفتاح anon الأصلي
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const SUPABASE_ANON_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
+
+// إنشاء العميل مع الترويسات الصحيحة للمفتاح
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  global: {
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  }
+});
 
 function go(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
@@ -190,11 +199,16 @@ async function logout() {
 }
 
 async function checkUserStatus() {
-  const { data: { user } } = await supabaseClient.auth.getUser();
-  if (user) {
-    $('profileName').textContent = '💎 ' + user.email.split('@')[0];
-    $('profileEmail').textContent = user.email;
-  } else {
+  try {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    if (user) {
+      $('profileName').textContent = '💎 ' + user.email.split('@')[0];
+      $('profileEmail').textContent = user.email;
+    } else {
+      $('profileName').textContent = 'زائر';
+      $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
+    }
+  } catch(e) {
     $('profileName').textContent = 'زائر';
     $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
   }
