@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08090c">
+<title>JOWHAR_BS | الجوهره</title>
+<style>
+:root{--bg:#08090c;--card:#14151b;--gold:#e8b653;--light:#ffdf91;--text:#f5f3ed;--muted:#aaaab3;--border:#343039}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1a140a 0, var(--bg) 45%);color:var(--text);font-family:Arial,Tahoma,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#0b0b0fee;backdrop-filter:blur(12px);border-bottom:1px solid #514025;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px}.crown{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--light),#9a671e);color:#171109;display:grid;place-items:center;font-size:26px}.logo{font-weight:900;color:var(--light);font-size:20px;letter-spacing:1px}.tag{font-size:10px;letter-spacing:2px;color:var(--gold);margin-top:4px}
+button{border:0;border-radius:11px;padding:11px 14px;background:var(--gold);color:#18120a;font-weight:800;cursor:pointer;font:inherit}button.secondary{background:#19171a;color:var(--light);border:1px solid #574426}button:active{transform:scale(.98)}
+nav{display:flex;gap:7px;padding:11px;overflow-x:auto;background:#101116;border-bottom:1px solid var(--border)}nav button{white-space:nowrap;font-size:13px}nav button.active{background:var(--light)}
+main{width:min(960px,calc(100% - 24px));margin:20px auto 40px}.page.hidden{display:none}
+.hero{position:relative;overflow:hidden;padding:clamp(24px,5vw,42px);border:1px solid #705326;border-radius:22px;background:linear-gradient(110deg,#090a0dee,#0c0c0c8c),radial-gradient(circle at 75% 15%,#7b551e,#22190b 42%,#0c0d12 75%)}.hero:after{content:"♛";position:absolute;left:4%;top:-35px;font-size:180px;color:#e8b65312;pointer-events:none}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:800}.hero h1{font-size:clamp(30px,7vw,48px);margin:12px 0;color:var(--light)}.hero p{max-width:670px;color:#ded8cc;line-height:1.95}.hero-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.card{background:linear-gradient(145deg,#16171d,#101116);border:1px solid var(--border);border-radius:16px;padding:17px;margin:12px 0}.section-title{color:var(--light);font-size:23px;margin:0 0 8px}.muted{color:var(--muted);line-height:1.85}.small{font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.feature{font-size:35px;color:var(--gold);margin-bottom:9px}.pill{display:inline-block;background:#241d10;color:var(--light);border:1px solid #604921;border-radius:99px;padding:4px 9px;font-size:11px}
+input,textarea{width:100%;display:block;padding:13px;margin:10px 0;border:1px solid var(--border);border-radius:10px;background:#090a0e;color:white;font:inherit}textarea{resize:vertical}.post{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;margin:13px 0}.post-actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid #303039;padding-top:10px}.post-actions button{background:#211b11;color:var(--light);border:1px solid #514025;font-size:12px;padding:8px 10px}
+.welcome{border-color:#66502c;background:linear-gradient(135deg,#20180d,#111217)}.welcome h2{color:var(--light);margin-top:0}.welcome strong{color:var(--gold)}
+footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-top:1px solid #27262a}
+#notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#241d10;border:1px solid #775c2c;color:#ffedc2;border-radius:12px;padding:12px 16px;z-index:20;max-width:90vw}
+@media(max-width:560px){header{padding:12px 10px}.logo{font-size:17px}.crown{width:38px;height:38px}.grid{grid-template-columns:1fr}nav{padding:9px 7px}nav button{padding:10px 11px}main{width:calc(100% - 18px);margin-top:12px}.hero p{font-size:14px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="crown">♛</div><div><div class="logo">JOWHAR_BS</div><div class="tag">PLAY · LEARN · SHINE</div></div></div>
+ <button class="secondary" onclick="openAuth()">دخول الجواهر</button>
+</header>
+<nav id="nav">
+ <button class="active" onclick="go('home',this)">الرئيسية</button>
+ <button onclick="go('tutorials',this)">شروحات المجتمع</button>
+ <button onclick="go('benefit',this)">انفع المجتمع</button>
+ <button onclick="go('tournaments',this)">البطولات</button>
+ <button onclick="go('profile',this)">ملفي الشخصي</button>
+</nav>
+<main>
+<section id="home" class="page">
+ <div class="hero">
+  <div class="eyebrow">BLOOD STRIKE COMMUNITY</div>
+  <h1>أهلًا بك بين الجواهر 💎</h1>
+  <p>مرحبًا بك في مجتمع الجوهره، حيث المعرفة قوة، ومشاركة الخبرة تصنع الفرق. هنا كل جوهرة عندها معلومة تستحق المشاركة، وكل لاعب يقدر يتعلّم ويطوّر مستواه مع الآخرين.</p>
+  <strong style="color:var(--gold)">تعلّم • شارك • تألّق</strong>
+  <div class="hero-buttons"><button onclick="go('tutorials')">اكتشف شروحات المجتمع</button><button class="secondary" onclick="go('benefit')">انفع المجتمع</button></div>
+ </div>
+ <div class="card welcome"><h2>💎 كل جوهرة عندها قيمة</h2><p class="muted">شارك معلومة، ساعد لاعبًا، أو تعلّم حركة جديدة. قوتنا في المعرفة والتعاون.</p></div>
+ <div class="grid">
+  <div class="card"><div class="feature">📚</div><h3>شروحات المجتمع</h3><p class="muted small">شروحات ونصائح منظّمة لتطوير مهاراتك في Blood Strike.</p><button class="secondary" onclick="go('tutorials')">استكشف</button></div>
+  <div class="card"><div class="feature">💎</div><h3>انفع المجتمع</h3><p class="muted small">شارك منشورًا أو سؤالًا أو معلومة تفيد بقية الجواهر.</p><button class="secondary" onclick="go('benefit')">شارك الآن</button></div>
+ </div>
+</section>
+
+<section id="tutorials" class="page hidden">
+ <h2 class="section-title">📚 شروحات المجتمع</h2><p class="muted">مساحة للتعلّم واكتساب مهارات جديدة في Blood Strike.</p>
+ <div class="grid">
+  <article class="card"><div class="feature">🎯</div><span class="pill">إعدادات</span><h3>الحساسية والتحكم</h3><p class="muted small">أفكار لضبط الحساسية حسب أسلوب لعبك والتدرّب عليها.</p></article>
+  <article class="card"><div class="feature">⚙️</div><span class="pill">أداء</span><h3>تحسين تجربة اللعب</h3><p class="muted small">نصائح عامة للإعدادات واللعب بسلاسة.</p></article>
+  <article class="card"><div class="feature">🛡️</div><span class="pill">مبتدئين</span><h3>أساسيات القتال</h3><p class="muted small">تعرّف على الحركة والعمل الجماعي واتخاذ القرار.</p></article>
+  <article class="card"><div class="feature">🧠</div><span class="pill">نصائح</span><h3>تعلّم من الجواهر</h3><p class="muted small">ستُضاف هنا الشروحات التي يجري تجهيزها للمجتمع.</p></article>
+ </div>
+</section>
+
+<section id="benefit" class="page hidden">
+ <h2 class="section-title">💎 انفع المجتمع</h2><p class="muted">كل جوهرة تقدر تشارك فكرة أو معلومة أو سؤالًا يفيد المجتمع.</p>
+ <div class="card"><div id="composerTitle"><b>شارك الجواهر معرفتك</b></div>
+  <textarea id="postText" rows="4" maxlength="1200" placeholder="اكتب معلومة أو نصيحة أو سؤالًا..."></textarea>
+  <button onclick="addPost()">نشر المساهمة</button>
+  <p class="muted small">هذه نسخة تجريبية: المساهمات محفوظة على هذا الجهاز فقط.</p>
+ </div>
+ <div id="posts"></div>
+</section>
+
+<section id="tournaments" class="page hidden">
+ <h2 class="section-title">🏆 البطولات</h2><p class="muted">مساحة لمتابعة تحديات الجواهر وإعلانات البطولات عند تجهيزها.</p>
+ <div class="grid">
+  <div class="card"><div class="feature">🏆</div><span class="pill">قريبًا</span><h3>بطولة الجواهر</h3><p class="muted small">سيتم نشر التفاصيل هنا بعد تحديد موعد البطولة.</p></div>
+  <div class="card"><div class="feature">⚔️</div><span class="pill">قيد التحضير</span><h3>تحدي الفرق</h3><p class="muted small">تحديات مجتمعية مقترحة، وليست فعاليات مؤكدة بعد.</p></div>
+ </div>
+</section>
+
+<section id="profile" class="page hidden">
+ <h2 class="section-title">👤 ملف الجوهرة</h2>
+ <div class="card"><div class="feature">💎</div><h3 id="profileName">زائر</h3><p id="profileEmail" class="muted">ادخل بحساب تجريبي لتجربة الملف الشخصي.</p><button onclick="openAuth()">دخول تجريبي</button> <button class="secondary" onclick="logout()">تسجيل الخروج</button></div>
+ <div class="card"><h3>حالة الموقع</h3><p class="muted small">هذه نسخة واجهة تجريبية. تسجيل الدخول والمنشورات محلية على جهازك، ولم يتم ربط حسابات حقيقية أو قاعدة بيانات مشتركة بعد.</p></div>
+</section>
+
+<section id="auth" class="page hidden">
+ <h2 class="section-title">🔐 دخول الجواهر</h2>
+ <div class="card"><p class="muted small">دخول تجريبي فقط وليس حسابًا حقيقيًا على الإنترنت. لا تستخدم كلمة مرورك الحقيقية.</p>
+  <input id="userName" placeholder="اسم الجوهرة">
+  <input id="userEmail" type="email" placeholder="البريد الإلكتروني">
+  <button onclick="login()">دخول تجريبي</button> <button class="secondary" onclick="go('home')">رجوع</button>
+ </div>
+</section>
+</main>
+<footer>♛ JOWHAR_BS · مجتمع الجواهر · PLAY · LEARN · SHINE</footer>
+<div id="notice" hidden></div>
+<script>
+const $=id=>document.getElementById(id);
+function go(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));$(id).classList.remove('hidden');document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');else{const names={home:'الرئيسية',tutorials:'شروحات المجتمع',benefit:'انفع المجتمع',tournaments:'البطولات',profile:'ملفي الشخصي'};document.querySelectorAll('#nav button').forEach(b=>{if(b.textContent===names[id])b.classList.add('active')})}window.scrollTo({top:0,behavior:'smooth'})}
+function say(msg){const n=$('notice');n.textContent=msg;n.hidden=false;setTimeout(()=>n.hidden=true,2500)}
+function openAuth(){go('auth')}
+function login(){const name=$('userName').value.trim(),email=$('userEmail').value.trim();if(!name||!email||!email.includes('@')){say('اكتب اسم الجوهرة وبريدًا صحيحًا للتجربة.');return}localStorage.setItem('jbs_v5_user',JSON.stringify({name,email}));updateProfile();go('profile');say('أهلًا بك يا جوهرة! تم الدخول التجريبي على هذا الجهاز.')}
+function updateProfile(){const u=JSON.parse(localStorage.getItem('jbs_v5_user')||'null');$('profileName').textContent=u?('💎 '+u.name):'زائر';$('profileEmail').textContent=u?u.email:'ادخل بحساب تجريبي لتجربة الملف الشخصي.'}
+function logout(){localStorage.removeItem('jbs_v5_user');updateProfile();say('تم تسجيل الخروج.');go('home')}
+function addPost(){const body=$('postText').value.trim();if(!body){say('اكتب مساهمتك أولًا.');return}const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');posts.unshift({body,likes:0,date:new Date().toLocaleDateString('ar')});localStorage.setItem('jbs_v5_posts',JSON.stringify(posts));$('postText').value='';renderPosts();say('تمت إضافة مساهمتك محليًا يا جوهرة!')}
+function likePost(i){const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');posts[i].likes++;localStorage.setItem('jbs_v5_posts',JSON.stringify(posts));renderPosts()}
+function renderPosts(){const root=$('posts');root.replaceChildren();const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');if(!posts.length){const p=document.createElement('div');p.className='card muted';p.textContent='كن أول جوهرة تشارك معلومة نافعة!';root.appendChild(p);return}posts.forEach((post,i)=>{const c=document.createElement('article');c.className='card';const who=document.createElement('span');who.className='pill';who.textContent='💎 جوهرة من المجتمع';const body=document.createElement('p');body.className='post';body.textContent=post.body;const actions=document.createElement('div');actions.className='post-actions';const like=document.createElement('button');like.textContent='♡ إعجاب '+post.likes;like.onclick=()=>likePost(i);actions.append(like);c.append(who,body,actions);root.append(c)})}
+updateProfile();renderPosts();
+</script>
+</body>
+</html>
