@@ -116,8 +116,9 @@ footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-t
 <script>
 const $=id=>document.getElementById(id);
 
+// تهيئة الاتصال بـ Supabase
 const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
-const SUPABASE_ANON_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0aGxkcmhhaXJkaHVpdHJtemZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0MjE2MzgsImV4cCI6MjA4ODk5NzYzOH0.N94r3A8G0f3B6s5Z2l3K4J5H6G7F8E9D0C1B2A3B4C5'; // مفتاح anon الأصلي
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 function go(id,btn){
