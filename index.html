@@ -116,11 +116,9 @@ footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-t
 <script>
 const $=id=>document.getElementById(id);
 
-// تهيئة الاتصال بـ Supabase باستعمال المفتاح الخاص بك
 const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
 const SUPABASE_ANON_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
 
-// إنشاء العميل مع الترويسات الصحيحة للمفتاح
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   global: {
     headers: {
@@ -268,4 +266,3 @@ renderPosts();
 </script>
 </body>
 </html>
-
