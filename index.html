@@ -65,7 +65,7 @@ footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-t
  <div class="card"><div id="composerTitle"><b>شارك الجواهر معرفتك</b></div>
   <textarea id="postText" rows="4" maxlength="1200" placeholder="اكتب معلومة أو نصيحة أو سؤالًا..."></textarea>
   <button onclick="addPost()">نشر المساهمة</button>
-  <p class="muted small">هذه نسخة تجريبية: المساهمات محفوظة على هذا الجهاز فقط.</p>
+  <p class="muted small">المساهمات محفوظة على جهازك حالياً.</p>
  </div>
  <div id="posts"></div>
 </section>
@@ -80,71 +80,176 @@ footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-t
 
 <section id="profile" class="page hidden">
  <h2 class="section-title">👤 ملف الجوهرة</h2>
- <div class="card"><div class="feature">💎</div><h3 id="profileName">زائر</h3><p id="profileEmail" class="muted">ادخل بحساب تجريبي لتجربة الملف الشخصي.</p><button onclick="openAuth()">دخول تجريبي</button> <button class="secondary" onclick="logout()">تسجيل الخروج</button></div>
- <div class="card"><h3>حالة الموقع</h3><p class="muted small">هذه نسخة واجهة تجريبية. تسجيل الدخول والمنشورات محلية على جهازك، ولم يتم ربط حسابات حقيقية أو قاعدة بيانات مشتركة بعد.</p></div>
+ <div class="card">
+   <div class="feature">💎</div>
+   <h3 id="profileName">زائر</h3>
+   <p id="profileEmail" class="muted">قم بتسجيل الدخول للانضمام إلى الجواهر.</p>
+   <button onclick="openAuth()">تسجيل الدخول / حساب جديد</button> 
+   <button class="secondary" onclick="logout()">تسجيل الخروج</button>
+ </div>
+ <div class="card">
+   <h3>حالة الموقع</h3>
+   <p class="muted small">تم ربط تسجيل الدخول بقاعدة البيانات الحقيقية لـ Supabase.</p>
+ </div>
 </section>
 
 <section id="auth" class="page hidden">
  <h2 class="section-title">🔐 دخول الجواهر</h2>
- <div class="card"><p class="muted small">دخول تجريبي فقط وليس حسابًا حقيقيًا على الإنترنت. لا تستخدم كلمة مرورك الحقيقية.</p>
-  <input id="userName" placeholder="اسم الجوهرة">
+ <div class="card">
+  <p class="muted small">أدخل بريدك الإلكتروني وكلمة المرور لتسجيل الدخول أو إنشاء حساب جديد حقيقي.</p>
   <input id="userEmail" type="email" placeholder="البريد الإلكتروني">
-  <button onclick="login()">دخول تجريبي</button> <button class="secondary" onclick="go('home')">رجوع</button>
+  <input id="userPassword" type="password" placeholder="كلمة المرور (6 أحرف/أرقام على الأقل)">
+  <div style="display:flex; gap:10px; margin-top:10px;">
+    <button onclick="handleLogin()">تسجيل الدخول</button>
+    <button class="secondary" onclick="handleRegister()">إنشاء حساب جديد</button>
+  </div>
+  <button class="secondary" onclick="go('home')" style="margin-top:10px; width:100%;">رجوع</button>
  </div>
 </section>
 </main>
 <footer>♛ JOWHAR_BS · مجتمع الجواهر · PLAY · LEARN · SHINE</footer>
 <div id="notice" hidden></div>
-<script>
-const $=id=>document.getElementById(id);
-function go(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));$(id).classList.remove('hidden');document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');else{const names={home:'الرئيسية',tutorials:'شروحات المجتمع',benefit:'انفع المجتمع',tournaments:'البطولات',profile:'ملفي الشخصي'};document.querySelectorAll('#nav button').forEach(b=>{if(b.textContent===names[id])b.classList.add('active')})}window.scrollTo({top:0,behavior:'smooth'})}
-function say(msg){const n=$('notice');n.textContent=msg;n.hidden=false;setTimeout(()=>n.hidden=true,2500)}
-function openAuth(){go('auth')}
-function login(){const name=$('userName').value.trim(),email=$('userEmail').value.trim();if(!name||!email||!email.includes('@')){say('اكتب اسم الجوهرة وبريدًا صحيحًا للتجربة.');return}localStorage.setItem('jbs_v5_user',JSON.stringify({name,email}));updateProfile();go('profile');say('أهلًا بك يا جوهرة! تم الدخول التجريبي على هذا الجهاز.')}
-function updateProfile(){const u=JSON.parse(localStorage.getItem('jbs_v5_user')||'null');$('profileName').textContent=u?('💎 '+u.name):'زائر';$('profileEmail').textContent=u?u.email:'ادخل بحساب تجريبي لتجربة الملف الشخصي.'}
-function logout(){localStorage.removeItem('jbs_v5_user');updateProfile();say('تم تسجيل الخروج.');go('home')}
-function addPost(){const body=$('postText').value.trim();if(!body){say('اكتب مساهمتك أولًا.');return}const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');posts.unshift({body,likes:0,date:new Date().toLocaleDateString('ar')});localStorage.setItem('jbs_v5_posts',JSON.stringify(posts));$('postText').value='';renderPosts();say('تمت إضافة مساهمتك محليًا يا جوهرة!')}
-function likePost(i){const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');posts[i].likes++;localStorage.setItem('jbs_v5_posts',JSON.stringify(posts));renderPosts()}
-function renderPosts(){const root=$('posts');root.replaceChildren();const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');if(!posts.length){const p=document.createElement('div');p.className='card muted';p.textContent='كن أول جوهرة تشارك معلومة نافعة!';root.appendChild(p);return}posts.forEach((post,i)=>{const c=document.createElement('article');c.className='card';const who=document.createElement('span');who.className='pill';who.textContent='💎 جوهرة من المجتمع';const body=document.createElement('p');body.className='post';body.textContent=post.body;const actions=document.createElement('div');actions.className='post-actions';const like=document.createElement('button');like.textContent='♡ إعجاب '+post.likes;like.onclick=()=>likePost(i);actions.append(like);c.append(who,body,actions);root.append(c)})}
-updateProfile();renderPosts();
-</script>
+
 <!-- استدعاء مكتبة Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  // تهيئة الاتصال بـ Supabase
-  const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
-  const SUPABASE_ANON_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
-  
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const $=id=>document.getElementById(id);
 
-  // دالة إنشاء حساب جديد حقيقي
-  async function registerUser(email, password) {
-    const { data, error } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    });
+const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
+const SUPABASE_ANON_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    if (error) {
-      alert("خطأ في التسجيل: " + error.message);
-    } else {
-      alert("تم إنشاء الحساب بنجاح! تفقد بريدك الإلكتروني لتأكيد الحساب.");
-    }
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
+  $(id).classList.remove('hidden');
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  else {
+    const names={home:'الرئيسية',tutorials:'شروحات المجتمع',benefit:'انفع المجتمع',tournaments:'البطولات',profile:'ملفي الشخصي'};
+    document.querySelectorAll('#nav button').forEach(b=>{if(b.textContent===names[id])b.classList.add('active')});
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function say(msg){
+  const n=$('notice');
+  n.textContent=msg;
+  n.hidden=false;
+  setTimeout(()=>n.hidden=true,3500);
+}
+
+function openAuth(){go('auth')}
+
+async function handleRegister() {
+  const email = $('userEmail').value.trim();
+  const password = $('userPassword').value.trim();
+
+  if(!email || !password) {
+    say('يرجى كتابة البريد الإلكتروني وكلمة المرور أولاً.');
+    return;
   }
 
-  // دالة تسجيل الدخول الحقيقية
-  async function loginUser(email, password) {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
+  const { data, error } = await supabaseClient.auth.signUp({ email, password });
 
-    if (error) {
-      alert("خطأ في الدخول: " + error.message);
-    } else {
-      alert("تم تسجيل الدخول بنجاح! أهلاً بك في مجتمع الجواهر.");
-    }
+  if (error) {
+    say("خطأ في التسجيل: " + error.message);
+  } else {
+    say("تم إنشاء الحساب بنجاح! تفقد بريدك لتأكيده.");
+    checkUserStatus();
+    go('profile');
   }
+}
+
+async function handleLogin() {
+  const email = $('userEmail').value.trim();
+  const password = $('userPassword').value.trim();
+
+  if(!email || !password) {
+    say('يرجى كتابة البريد الإلكتروني وكلمة المرور.');
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
+  if (error) {
+    say("خطأ في الدخول: " + error.message);
+  } else {
+    say("تم تسجيل الدخول بنجاح! أهلاً بك.");
+    checkUserStatus();
+    go('profile');
+  }
+}
+
+async function logout() {
+  await supabaseClient.auth.signOut();
+  checkUserStatus();
+  say('تم تسجيل الخروج.');
+  go('home');
+}
+
+async function checkUserStatus() {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+  if (user) {
+    $('profileName').textContent = '💎 ' + user.email.split('@')[0];
+    $('profileEmail').textContent = user.email;
+  } else {
+    $('profileName').textContent = 'زائر';
+    $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
+  }
+}
+
+function addPost(){
+  const body=$('postText').value.trim();
+  if(!body){say('اكتب مساهمتك أولًا.');return}
+  const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');
+  posts.unshift({body,likes:0,date:new Date().toLocaleDateString('ar')});
+  localStorage.setItem('jbs_v5_posts',JSON.stringify(posts));
+  $('postText').value='';
+  renderPosts();
+  say('تمت إضافة مساهمتك يا جوهرة!');
+}
+
+function likePost(i){
+  const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');
+  posts[i].likes++;
+  localStorage.setItem('jbs_v5_posts',JSON.stringify(posts));
+  renderPosts();
+}
+
+function renderPosts(){
+  const root=$('posts');
+  root.replaceChildren();
+  const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');
+  if(!posts.length){
+    const p=document.createElement('div');
+    p.className='card muted';
+    p.textContent='كن أول جوهرة تشارك معلومة نافعة!';
+    root.appendChild(p);
+    return;
+  }
+  posts.forEach((post,i)=>{
+    const c=document.createElement('article');
+    c.className='card';
+    const who=document.createElement('span');
+    who.className='pill';
+    who.textContent='💎 جوهرة من المجتمع';
+    const body=document.createElement('p');
+    body.className='post';
+    body.textContent=post.body;
+    const actions=document.createElement('div');
+    actions.className='post-actions';
+    const like=document.createElement('button');
+    like.textContent='♡ إعجاب '+post.likes;
+    like.onclick=()=>likePost(i);
+    actions.append(like);
+    c.append(who,body,actions);
+    root.append(c);
+  });
+}
+
+checkUserStatus();
+renderPosts();
 </script>
 </body>
 </html>
