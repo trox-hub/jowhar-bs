@@ -108,5 +108,43 @@ function likePost(i){const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')
 function renderPosts(){const root=$('posts');root.replaceChildren();const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');if(!posts.length){const p=document.createElement('div');p.className='card muted';p.textContent='كن أول جوهرة تشارك معلومة نافعة!';root.appendChild(p);return}posts.forEach((post,i)=>{const c=document.createElement('article');c.className='card';const who=document.createElement('span');who.className='pill';who.textContent='💎 جوهرة من المجتمع';const body=document.createElement('p');body.className='post';body.textContent=post.body;const actions=document.createElement('div');actions.className='post-actions';const like=document.createElement('button');like.textContent='♡ إعجاب '+post.likes;like.onclick=()=>likePost(i);actions.append(like);c.append(who,body,actions);root.append(c)})}
 updateProfile();renderPosts();
 </script>
+<!-- استدعاء مكتبة Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  // تهيئة الاتصال بـ Supabase
+  const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
+  const SUPABASE_ANON_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
+  
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // دالة إنشاء حساب جديد حقيقي
+  async function registerUser(email, password) {
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      alert("خطأ في التسجيل: " + error.message);
+    } else {
+      alert("تم إنشاء الحساب بنجاح! تفقد بريدك الإلكتروني لتأكيد الحساب.");
+    }
+  }
+
+  // دالة تسجيل الدخول الحقيقية
+  async function loginUser(email, password) {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      alert("خطأ في الدخول: " + error.message);
+    } else {
+      alert("تم تسجيل الدخول بنجاح! أهلاً بك في مجتمع الجواهر.");
+    }
+  }
+</script>
 </body>
 </html>
