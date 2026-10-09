@@ -87,18 +87,14 @@ footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-t
    <button onclick="openAuth()">تسجيل الدخول / حساب جديد</button> 
    <button class="secondary" onclick="logout()">تسجيل الخروج</button>
  </div>
- <div class="card">
-   <h3>حالة الموقع</h3>
-   <p class="muted small">تم ربط تسجيل الدخول بقاعدة البيانات الحقيقية لـ Supabase.</p>
- </div>
 </section>
 
 <section id="auth" class="page hidden">
  <h2 class="section-title">🔐 دخول الجواهر</h2>
  <div class="card">
-  <p class="muted small">أدخل بريدك الإلكتروني وكلمة المرور لتسجيل الدخول أو إنشاء حساب جديد حقيقي.</p>
+  <p class="muted small">أدخل بريدك الإلكتروني وكلمة المرور لتسجيل الدخول أو إنشاء حساب جديد.</p>
   <input id="userEmail" type="email" placeholder="البريد الإلكتروني">
-  <input id="userPassword" type="password" placeholder="كلمة المرور (6 أحرف/أرقام على الأقل)">
+  <input id="userPassword" type="password" placeholder="كلمة المرور">
   <div style="display:flex; gap:10px; margin-top:10px;">
     <button onclick="handleLogin()">تسجيل الدخول</button>
     <button class="secondary" onclick="handleRegister()">إنشاء حساب جديد</button>
@@ -110,23 +106,11 @@ footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-t
 <footer>♛ JOWHAR_BS · مجتمع الجواهر · PLAY · LEARN · SHINE</footer>
 <div id="notice" hidden></div>
 
-<!-- استدعاء مكتبة Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 const $=id=>document.getElementById(id);
 
 const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
-const SUPABASE_ANON_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
-
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-  global: {
-    headers: {
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-    }
-  }
-});
+const SUPABASE_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
 
 function go(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
@@ -154,18 +138,33 @@ async function handleRegister() {
   const password = $('userPassword').value.trim();
 
   if(!email || !password) {
-    say('يرجى كتابة البريد الإلكتروني وكلمة المرور أولاً.');
+    say('يرجى كتابة البريد الإلكتروني وكلمة المرور.');
     return;
   }
 
-  const { data, error } = await supabaseClient.auth.signUp({ email, password });
+  try {
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY
+      },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
 
-  if (error) {
-    say("خطأ في التسجيل: " + error.message);
-  } else {
-    say("تم إنشاء الحساب بنجاح! تفقد بريدك لتأكيده.");
-    checkUserStatus();
-    go('profile');
+    if (!res.ok) {
+      say("خطأ: " + (data.msg || data.error_description || data.message || "فشل التسجيل"));
+    } else {
+      say("تم إنشاء الحساب بنجاح! يرجى التحقق من بريدك.");
+      if(data.user) {
+        localStorage.setItem('jbs_user', JSON.stringify(data.user));
+        checkUserStatus();
+        go('profile');
+      }
+    }
+  } catch(e) {
+    say("حدث خطأ في الاتصال بالسيرفر.");
   }
 }
 
@@ -178,35 +177,43 @@ async function handleLogin() {
     return;
   }
 
-  const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+  try {
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY
+      },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
 
-  if (error) {
-    say("خطأ في الدخول: " + error.message);
-  } else {
-    say("تم تسجيل الدخول بنجاح! أهلاً بك.");
-    checkUserStatus();
-    go('profile');
+    if (!res.ok) {
+      say("خطأ: " + (data.error_description || data.msg || "بيانات الدخول غير صحيحة"));
+    } else {
+      say("تم تسجيل الدخول بنجاح!");
+      localStorage.setItem('jbs_user', JSON.stringify(data.user));
+      checkUserStatus();
+      go('profile');
+    }
+  } catch(e) {
+    say("حدث خطأ في الاتصال بالسيرفر.");
   }
 }
 
-async function logout() {
-  await supabaseClient.auth.signOut();
+function logout() {
+  localStorage.removeItem('jbs_user');
   checkUserStatus();
   say('تم تسجيل الخروج.');
   go('home');
 }
 
-async function checkUserStatus() {
-  try {
-    const { data: { user } } = await supabaseClient.auth.getUser();
-    if (user) {
-      $('profileName').textContent = '💎 ' + user.email.split('@')[0];
-      $('profileEmail').textContent = user.email;
-    } else {
-      $('profileName').textContent = 'زائر';
-      $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
-    }
-  } catch(e) {
+function checkUserStatus() {
+  const user = JSON.parse(localStorage.getItem('jbs_user') || 'null');
+  if (user && user.email) {
+    $('profileName').textContent = '💎 ' + user.email.split('@')[0];
+    $('profileEmail').textContent = user.email;
+  } else {
     $('profileName').textContent = 'زائر';
     $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
   }
@@ -266,4 +273,3 @@ renderPosts();
 </script>
 </body>
 </html>
-
