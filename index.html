@@ -106,11 +106,14 @@ footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-t
 <footer>♛ JOWHAR_BS · مجتمع الجواهر · PLAY · LEARN · SHINE</footer>
 <div id="notice" hidden></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const $=id=>document.getElementById(id);
 
 const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
-const SUPABASE_KEY = 'Sb_publishable_dkxpCVQ8sD5JG_4Gbtd46Q_O-K7fRXV';
+const SUPABASE_ANON_KEY = 'EyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0aGxkcmhhaXJkaHVpdHJtemZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NzM3NzQsImV4cCI6MjEwNzE0OTc3NH0.FPV6P4aSYdfklHofhQWwJwllGK_9t9UvgfL1xeCQaiY';
+
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 function go(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
@@ -142,29 +145,14 @@ async function handleRegister() {
     return;
   }
 
-  try {
-    const res = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_KEY
-      },
-      body: JSON.stringify({ email, password })
-    });
-    const data = await res.json();
+  const { data, error } = await supabaseClient.auth.signUp({ email, password });
 
-    if (!res.ok) {
-      say("خطأ: " + (data.msg || data.error_description || data.message || "فشل التسجيل"));
-    } else {
-      say("تم إنشاء الحساب بنجاح! يرجى التحقق من بريدك.");
-      if(data.user) {
-        localStorage.setItem('jbs_user', JSON.stringify(data.user));
-        checkUserStatus();
-        go('profile');
-      }
-    }
-  } catch(e) {
-    say("حدث خطأ في الاتصال بالسيرفر.");
+  if (error) {
+    say("خطأ: " + error.message);
+  } else {
+    say("تم إنشاء الحساب بنجاح! تفقد بريدك الإلكتروني.");
+    checkUserStatus();
+    go('profile');
   }
 }
 
@@ -177,43 +165,35 @@ async function handleLogin() {
     return;
   }
 
-  try {
-    const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_KEY
-      },
-      body: JSON.stringify({ email, password })
-    });
-    const data = await res.json();
+  const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
-    if (!res.ok) {
-      say("خطأ: " + (data.error_description || data.msg || "بيانات الدخول غير صحيحة"));
-    } else {
-      say("تم تسجيل الدخول بنجاح!");
-      localStorage.setItem('jbs_user', JSON.stringify(data.user));
-      checkUserStatus();
-      go('profile');
-    }
-  } catch(e) {
-    say("حدث خطأ في الاتصال بالسيرفر.");
+  if (error) {
+    say("خطأ: " + error.message);
+  } else {
+    say("تم تسجيل الدخول بنجاح!");
+    checkUserStatus();
+    go('profile');
   }
 }
 
-function logout() {
-  localStorage.removeItem('jbs_user');
+async function logout() {
+  await supabaseClient.auth.signOut();
   checkUserStatus();
   say('تم تسجيل الخروج.');
   go('home');
 }
 
-function checkUserStatus() {
-  const user = JSON.parse(localStorage.getItem('jbs_user') || 'null');
-  if (user && user.email) {
-    $('profileName').textContent = '💎 ' + user.email.split('@')[0];
-    $('profileEmail').textContent = user.email;
-  } else {
+async function checkUserStatus() {
+  try {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    if (user) {
+      $('profileName').textContent = '💎 ' + user.email.split('@')[0];
+      $('profileEmail').textContent = user.email;
+    } else {
+      $('profileName').textContent = 'زائر';
+      $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
+    }
+  } catch(e) {
     $('profileName').textContent = 'زائر';
     $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
   }
