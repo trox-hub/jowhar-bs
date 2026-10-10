@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مساحة الكبار</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+    }
+    header {
+      background: #85002d;
+      padding: 22px;
+      text-align: center;
+    }
+    header h1 { margin: 0; }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 16px;
+      background: #202020;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .card {
+      background: #252525;
+      padding: 28px;
+      margin-top: 20px;
+      border-radius: 14px;
+    }
+    button {
+      background: #e91e63;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 22px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>مساحة الكبار 🔞</h1>
+    <p>منصة مخصصة للبالغين</p>
+  </header>
+
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#categories">التصنيفات</a>
+    <a href="#about">حول الموقع</a>
+  </nav>
+
+  <main id="home">
+    <h2>مرحبًا بك</h2>
+    <p>تصميم تجريبي لمنصة ذات طابع مخصص للبالغين.</p>
+
+    <section class="card" id="categories">
+      <h2>التصنيفات</h2>
+      <p>أضف هنا محتوى قانونيًا مناسبًا للبالغين.</p>
+      <button onclick="alert('هذه نسخة تجريبية من الموقع')">
+        استكشف الموقع
+      </button>
+    </section>
+
+    <section class="card" id="about">
+      <h2>حول الموقع</h2>
+      <p>احترم الخصوصية، وتأكد من قانونية المحتوى
+      والحصول على موافقة أصحاب الحقوق.</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 — جميع الحقوق محفوظة
+  </footer>
+</body>
+</html>
