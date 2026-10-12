@@ -3,254 +3,412 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08090c">
-<title>JOWHAR_BS | الجوهره</title>
+<meta name="theme-color" content="#171412">
+<title>FriendTest 🧡</title>
 <style>
-:root{--bg:#08090c;--card:#14151b;--gold:#e8b653;--light:#ffdf91;--text:#f5f3ed;--muted:#aaaab3;--border:#343039}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1a140a 0, var(--bg) 45%);color:var(--text);font-family:Arial,Tahoma,sans-serif}
-header{position:sticky;top:0;z-index:5;background:#0b0b0fee;backdrop-filter:blur(12px);border-bottom:1px solid #514025;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px}.crown{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--light),#9a671e);color:#171109;display:grid;place-items:center;font-size:26px}.logo{font-weight:900;color:var(--light);font-size:20px;letter-spacing:1px}.tag{font-size:10px;letter-spacing:2px;color:var(--gold);margin-top:4px}
-button{border:0;border-radius:11px;padding:11px 14px;background:var(--gold);color:#18120a;font-weight:800;cursor:pointer;font:inherit}button.secondary{background:#19171a;color:var(--light);border:1px solid #574426}button:active{transform:scale(.98)}
-nav{display:flex;gap:7px;padding:11px;overflow-x:auto;background:#101116;border-bottom:1px solid var(--border)}nav button{white-space:nowrap;font-size:13px}nav button.active{background:var(--light)}
-main{width:min(960px,calc(100% - 24px));margin:20px auto 40px}.page.hidden{display:none}
-.hero{position:relative;overflow:hidden;padding:clamp(24px,5vw,42px);border:1px solid #705326;border-radius:22px;background:linear-gradient(110deg,#090a0dee,#0c0c0c8c),radial-gradient(circle at 75% 15%,#7b551e,#22190b 42%,#0c0d12 75%)}.hero:after{content:"♛";position:absolute;left:4%;top:-35px;font-size:180px;color:#e8b65312;pointer-events:none}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:800}.hero h1{font-size:clamp(30px,7vw,48px);margin:12px 0;color:var(--light)}.hero p{max-width:670px;color:#ded8cc;line-height:1.95}.hero-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-.card{background:linear-gradient(145deg,#16171d,#101116);border:1px solid var(--border);border-radius:16px;padding:17px;margin:12px 0}.section-title{color:var(--light);font-size:23px;margin:0 0 8px}.muted{color:var(--muted);line-height:1.85}.small{font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.feature{font-size:35px;color:var(--gold);margin-bottom:9px}.pill{display:inline-block;background:#241d10;color:var(--light);border:1px solid #604921;border-radius:99px;padding:4px 9px;font-size:11px}
-input,textarea{width:100%;display:block;padding:13px;margin:10px 0;border:1px solid var(--border);border-radius:10px;background:#090a0e;color:white;font:inherit}textarea{resize:vertical}.post{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;margin:13px 0}.post-actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid #303039;padding-top:10px}.post-actions button{background:#211b11;color:var(--light);border:1px solid #514025;font-size:12px;padding:8px 10px}
-.welcome{border-color:#66502c;background:linear-gradient(135deg,#20180d,#111217)}.welcome h2{color:var(--light);margin-top:0}.welcome strong{color:var(--gold)}
-footer{text-align:center;padding:25px 10px;color:#85858d;font-size:12px;border-top:1px solid #27262a}
-#notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#241d10;border:1px solid #775c2c;color:#ffedc2;border-radius:12px;padding:12px 16px;z-index:20;max-width:90vw}
-@media(max-width:560px){header{padding:12px 10px}.logo{font-size:17px}.crown{width:38px;height:38px}.grid{grid-template-columns:1fr}nav{padding:9px 7px}nav button{padding:10px 11px}main{width:calc(100% - 18px);margin-top:12px}.hero p{font-size:14px}}
+:root {
+  --bg: #171412;
+  --card: #241E19;
+  --accent: #C65D32;
+  --accent-hover: #E0784D;
+  --cream: #F5EBDD;
+  --muted: #C4B4A4;
+  --border: #49362B;
+  --option: #30261F;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--cream);
+}
+main {
+  max-width: 650px;
+  margin: auto;
+  padding: 20px 14px;
+}
+header {
+  text-align: center;
+  padding: 22px 15px;
+}
+.logo {
+  font-size: 48px;
+}
+h1 {
+  color: var(--accent-hover);
+  margin: 10px;
+}
+h2 {
+  color: var(--cream);
+}
+p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 8px 25px #00000030;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin: 13px 0 7px;
+}
+input {
+  font: inherit;
+  max-width: 100%;
+}
+.name {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #191511;
+  color: var(--cream);
+  outline: none;
+}
+.name:focus {
+  border-color: var(--accent);
+}
+.name::placeholder {
+  color: #9D8A79;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  border-radius: 12px;
+  padding: 13px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+button:active {
+  transform: scale(0.98);
+}
+.primary {
+  background: var(--accent);
+  color: white;
+  width: 100%;
+  margin-top: 12px;
+}
+.primary:hover {
+  background: var(--accent-hover);
+}
+.secondary {
+  background: #3B2B21;
+  color: var(--cream);
+  width: 100%;
+  margin-top: 9px;
+  border: 1px solid var(--border);
+}
+.secondary:hover {
+  background: #493326;
+}
+.question {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 13px;
+  margin: 13px 0;
+  background: #211A15;
+}
+.question strong {
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: var(--option);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  margin: 7px 0;
+  font-weight: normal;
+  cursor: pointer;
+  color: var(--cream);
+}
+.option:has(input:checked) {
+  border-color: var(--accent);
+  background: #463025;
+}
+.option input {
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+.hidden {
+  display: none !important;
+}
+.center {
+  text-align: center;
+}
+.score {
+  font-size: 48px;
+  color: var(--accent-hover);
+  font-weight: bold;
+}
+.small {
+  font-size: 12px;
+  color: var(--muted);
+}
+#link {
+  direction: ltr;
+  text-align: left;
+}
+@media (max-width: 400px) {
+  main {
+    padding: 12px 10px;
+  }
+  .card {
+    padding: 15px;
+  }
+}
 </style>
 </head>
 <body>
-<header>
- <div class="brand"><div class="crown">♛</div><div><div class="logo">JOWHAR_BS</div><div class="tag">PLAY · LEARN · SHINE</div></div></div>
- <button class="secondary" onclick="openAuth()">دخول الجواهر</button>
-</header>
-<nav id="nav">
- <button class="active" onclick="go('home',this)">الرئيسية</button>
- <button onclick="go('tutorials',this)">شروحات المجتمع</button>
- <button onclick="go('benefit',this)">انفع المجتمع</button>
- <button onclick="go('tournaments',this)">البطولات</button>
- <button onclick="go('profile',this)">ملفي الشخصي</button>
-</nav>
 <main>
-<section id="home" class="page">
- <div class="hero">
-  <div class="eyebrow">BLOOD STRIKE COMMUNITY</div>
-  <h1>أهلًا بك بين الجواهر 💎</h1>
-  <p>مرحبًا بك في مجتمع الجوهره، حيث المعرفة قوة، ومشاركة الخبرة تصنع الفرق. هنا كل جوهرة عندها معلومة تستحق المشاركة، وكل لاعب يقدر يتعلّم ويطوّر مستواه مع الآخرين.</p>
-  <strong style="color:var(--gold)">تعلّم • شارك • تألّق</strong>
-  <div class="hero-buttons"><button onclick="go('tutorials')">اكتشف شروحات المجتمع</button><button class="secondary" onclick="go('benefit')">انفع المجتمع</button></div>
- </div>
- <div class="card welcome"><h2>💎 كل جوهرة عندها قيمة</h2><p class="muted">شارك معلومة، ساعد لاعبًا، أو تعلّم حركة جديدة. قوتنا في المعرفة والتعاون.</p></div>
- <div class="grid">
-  <div class="card"><div class="feature">📚</div><h3>شروحات المجتمع</h3><p class="muted small">شروحات ونصائح منظّمة لتطوير مهاراتك في Blood Strike.</p><button class="secondary" onclick="go('tutorials')">استكشف</button></div>
-  <div class="card"><div class="feature">💎</div><h3>انفع المجتمع</h3><p class="muted small">شارك منشورًا أو سؤالًا أو معلومة تفيد بقية الجواهر.</p><button class="secondary" onclick="go('benefit')">شارك الآن</button></div>
- </div>
+<header>
+  <div class="logo">🧡</div>
+  <h1>FriendTest</h1>
+  <p>دير تاست و تاستي صحابك! 🤎</p>
+</header>
+<section class="card" id="create">
+  <h2>✨ اخدم الاختبار</h2>
+  <label for="creator">اسمك</label>
+  <input class="name" id="creator" placeholder="اكتب اسمك">
+  <div id="builder"></div>
+  <button class="primary" onclick="createLink()">
+    إنشاء رابط الاختبار 🔗
+  </button>
 </section>
-
-<section id="tutorials" class="page hidden">
- <h2 class="section-title">📚 شروحات المجتمع</h2><p class="muted">مساحة للتعلّم واكتساب مهارات جديدة في Blood Strike.</p>
- <div class="grid">
-  <article class="card"><div class="feature">🎯</div><span class="pill">إعدادات</span><h3>الحساسية والتحكم</h3><p class="muted small">أفكار لضبط الحساسية حسب أسلوب لعبك والتدرّب عليها.</p></article>
-  <article class="card"><div class="feature">⚙️</div><span class="pill">أداء</span><h3>تحسين تجربة اللعب</h3><p class="muted small">نصائح عامة للإعدادات واللعب بسلاسة.</p></article>
-  <article class="card"><div class="feature">🛡️</div><span class="pill">مبتدئين</span><h3>أساسيات القتال</h3><p class="muted small">تعرّف على الحركة والعمل الجماعي واتخاذ القرار.</p></article>
-  <article class="card"><div class="feature">🧠</div><span class="pill">نصائح</span><h3>تعلّم من الجواهر</h3><p class="muted small">ستُضاف هنا الشروحات التي يجري تجهيزها للمجتمع.</p></article>
- </div>
+<section class="card hidden" id="share">
+  <h2>🎉 كملت!</h2>
+  <p>كوبي الرابط وابعثه لصاحبك.</p>
+  <input class="name" id="link" readonly>
+  <button class="primary" onclick="copyLink()">نسخ الرابط 📋</button>
+  <button class="secondary" onclick="shareLink()">مشاركة الرابط ↗</button>
+  <p class="small">رابط الاختبار يحتوي على الأسئلة وإجاباتك الصحيحة.</p>
+  <p> موقع مزالو قيد التطوير مع لوقت نزيد نحسنو</p>
+  <button class="secondary" onclick="location.href=location.pathname">
+    إنشاء اختبار جديد
+  </button>
 </section>
-
-<section id="benefit" class="page hidden">
- <h2 class="section-title">💎 انفع المجتمع</h2><p class="muted">كل جوهرة تقدر تشارك فكرة أو معلومة أو سؤالًا يفيد المجتمع.</p>
- <div class="card"><div id="composerTitle"><b>شارك الجواهر معرفتك</b></div>
-  <textarea id="postText" rows="4" maxlength="1200" placeholder="اكتب معلومة أو نصيحة أو سؤالًا..."></textarea>
-  <button onclick="addPost()">نشر المساهمة</button>
-  <p class="muted small">المساهمات محفوظة على جهازك حالياً.</p>
- </div>
- <div id="posts"></div>
+<section class="card hidden" id="play">
+  <h2 id="playTitle">FriendTest 🧡</h2>
+  <p>اختار الإجابة الصحيحة عن صاحبك!</p>
+  <div id="playQuestions"></div>
+  <button class="primary" onclick="checkAnswers()">شوف النتيجة 🏆</button>
 </section>
-
-<section id="tournaments" class="page hidden">
- <h2 class="section-title">🏆 البطولات</h2><p class="muted">مساحة لمتابعة تحديات الجواهر وإعلانات البطولات عند تجهيزها.</p>
- <div class="grid">
-  <div class="card"><div class="feature">🏆</div><span class="pill">قريبًا</span><h3>بطولة الجواهر</h3><p class="muted small">سيتم نشر التفاصيل هنا بعد تحديد موعد البطولة.</p></div>
-  <div class="card"><div class="feature">⚔️</div><span class="pill">قيد التحضير</span><h3>تحدي الفرق</h3><p class="muted small">تحديات مجتمعية مقترحة، وليست فعاليات مؤكدة بعد.</p></div>
- </div>
-</section>
-
-<section id="profile" class="page hidden">
- <h2 class="section-title">👤 ملف الجوهرة</h2>
- <div class="card">
-   <div class="feature">💎</div>
-   <h3 id="profileName">زائر</h3>
-   <p id="profileEmail" class="muted">قم بتسجيل الدخول للانضمام إلى الجواهر.</p>
-   <button onclick="openAuth()">تسجيل الدخول / حساب جديد</button> 
-   <button class="secondary" onclick="logout()">تسجيل الخروج</button>
- </div>
-</section>
-
-<section id="auth" class="page hidden">
- <h2 class="section-title">🔐 دخول الجواهر</h2>
- <div class="card">
-  <p class="muted small">أدخل بريدك الإلكتروني وكلمة المرور لتسجيل الدخول أو إنشاء حساب جديد.</p>
-  <input id="userEmail" type="email" placeholder="البريد الإلكتروني">
-  <input id="userPassword" type="password" placeholder="كلمة المرور">
-  <div style="display:flex; gap:10px; margin-top:10px;">
-    <button onclick="handleLogin()">تسجيل الدخول</button>
-    <button class="secondary" onclick="handleRegister()">إنشاء حساب جديد</button>
-  </div>
-  <button class="secondary" onclick="go('home')" style="margin-top:10px; width:100%;">رجوع</button>
- </div>
+<section class="card hidden center" id="result">
+  <h2>نتيجتك 🧡</h2>
+  <div class="score" id="score">0/10</div>
+  <p id="message"></p>
+  <button class="primary" onclick="shareScore()">مشاركة النتيجة</button>
+  <button class="secondary" onclick="location.href=location.pathname">
+    اختبار جديد
+  </button>
 </section>
 </main>
-<footer>♛ JOWHAR_BS · مجتمع الجواهر · PLAY · LEARN · SHINE</footer>
-<div id="notice" hidden></div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const $=id=>document.getElementById(id);
-
-const SUPABASE_URL = 'https://hthldrhairdhuitrmzfh.supabase.co';
-const SUPABASE_ANON_KEY = 'EyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0aGxkcmhhaXJkaHVpdHJtemZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NzM3NzQsImV4cCI6MjEwNzE0OTc3NH0.FPV6P4aSYdfklHofhQWwJwllGK_9t9UvgfL1xeCQaiY';
-
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-function go(id,btn){
-  document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
-  $(id).classList.remove('hidden');
-  document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  else {
-    const names={home:'الرئيسية',tutorials:'شروحات المجتمع',benefit:'انفع المجتمع',tournaments:'البطولات',profile:'ملفي الشخصي'};
-    document.querySelectorAll('#nav button').forEach(b=>{if(b.textContent===names[id])b.classList.add('active')});
-  }
-  window.scrollTo({top:0,behavior:'smooth'});
+const bank = [
+["لونك المفضل؟",["الأزرق","الأسود","الأحمر","الأخضر"]],
+["لعبتك المفضلة؟",["Minecraft","Blood Strike","Free Fire","كرة القدم"]],
+["أكلك المفضل؟",["بيتزا","برغر","شاورما","مكرونة"]],
+["مشروبك المفضل؟",["ماء","عصير","قهوة","مشروب غازي"]],
+["وقتك المفضل؟",["الصباح","العصر","المساء","الليل"]],
+["وش تحب في العطلة؟",["اللعب","الخروج","النوم","مشاهدة الأفلام"]],
+["نوع الفيديوهات الذي تفضله؟",["ألعاب","كوميديا","رياضة","قصص"]],
+["رياضتك المفضلة؟",["كرة القدم","كرة السلة","السباحة","لا شيء"]],
+["حيوانك المفضل؟",["القطط","الكلاب","الطيور","الأرانب"]],
+["أكثر صفة تحبها في الصديق؟",["الوفاء","المرح","الصراحة","الاهتمام"]],
+["فصلك المفضل؟",["الشتاء","الصيف","الربيع","الخريف"]],
+["نوع الألعاب الذي تحبه؟",["العالم المفتوح","التصويب","الألغاز","السباقات"]],
+["حلاك المفضل؟",["الشوكولاتة","المثلجات","الكعك","الحلوى"]],
+["وش تختار في يوم فارغ؟",["ألعب","أخرج","أشاهد فيلمًا","أتعلم شيئًا"]],
+["وش اللي يضحكك؟",["الميمز","مواقف الأصدقاء","النكت","المقاطع المضحكة"]],
+["مكانك المفضل؟",["البحر","الجبال","المدينة","مكان هادئ"]],
+["كيفاش تحب التواصل؟",["الرسائل","المكالمات","وجهًا لوجه","الفيديو"]],
+["وش اللي يحمسك؟",["التحديات","الفوز","الأصدقاء","الاكتشاف"]],
+["وش أكثر شيء تقدّره؟",["الثقة","الاحترام","المرح","المساعدة"]],
+["أي هدية تفضل؟",["شيء مفيد","هدية شخصية","رسالة جميلة","مفاجأة"]]
+];
+let questions = [], correct = [], answers = [], owner = "";
+function el(id) {
+  return document.getElementById(id);
 }
-
-function say(msg){
-  const n=$('notice');
-  n.textContent=msg;
-  n.hidden=false;
-  setTimeout(()=>n.hidden=true,3500);
+function hideAll() {
+  ["create","share","play","result"].forEach(id =>
+    el(id).classList.add("hidden")
+  );
 }
-
-function openAuth(){go('auth')}
-
-async function handleRegister() {
-  const email = $('userEmail').value.trim();
-  const password = $('userPassword').value.trim();
-
-  if(!email || !password) {
-    say('يرجى كتابة البريد الإلكتروني وكلمة المرور.');
-    return;
-  }
-
-  const { data, error } = await supabaseClient.auth.signUp({ email, password });
-
-  if (error) {
-    say("خطأ: " + error.message);
-  } else {
-    say("تم إنشاء الحساب بنجاح! تفقد بريدك الإلكتروني.");
-    checkUserStatus();
-    go('profile');
-  }
+function show(id) {
+  hideAll();
+  el(id).classList.remove("hidden");
+  window.scrollTo(0,0);
 }
-
-async function handleLogin() {
-  const email = $('userEmail').value.trim();
-  const password = $('userPassword').value.trim();
-
-  if(!email || !password) {
-    say('يرجى كتابة البريد الإلكتروني وكلمة المرور.');
-    return;
-  }
-
-  const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
-
-  if (error) {
-    say("خطأ: " + error.message);
-  } else {
-    say("تم تسجيل الدخول بنجاح!");
-    checkUserStatus();
-    go('profile');
-  }
+function shuffle(a) {
+  return [...a].sort(() => Math.random() - 0.5);
 }
-
-async function logout() {
-  await supabaseClient.auth.signOut();
-  checkUserStatus();
-  say('تم تسجيل الخروج.');
-  go('home');
-}
-
-async function checkUserStatus() {
-  try {
-    const { data: { user } } = await supabaseClient.auth.getUser();
-    if (user) {
-      $('profileName').textContent = '💎 ' + user.email.split('@')[0];
-      $('profileEmail').textContent = user.email;
-    } else {
-      $('profileName').textContent = 'زائر';
-      $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
-    }
-  } catch(e) {
-    $('profileName').textContent = 'زائر';
-    $('profileEmail').textContent = 'قم بتسجيل الدخول للانضمام إلى الجواهر.';
-  }
-}
-
-function addPost(){
-  const body=$('postText').value.trim();
-  if(!body){say('اكتب مساهمتك أولًا.');return}
-  const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');
-  posts.unshift({body,likes:0,date:new Date().toLocaleDateString('ar')});
-  localStorage.setItem('jbs_v5_posts',JSON.stringify(posts));
-  $('postText').value='';
-  renderPosts();
-  say('تمت إضافة مساهمتك يا جوهرة!');
-}
-
-function likePost(i){
-  const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');
-  posts[i].likes++;
-  localStorage.setItem('jbs_v5_posts',JSON.stringify(posts));
-  renderPosts();
-}
-
-function renderPosts(){
-  const root=$('posts');
-  root.replaceChildren();
-  const posts=JSON.parse(localStorage.getItem('jbs_v5_posts')||'[]');
-  if(!posts.length){
-    const p=document.createElement('div');
-    p.className='card muted';
-    p.textContent='كن أول جوهرة تشارك معلومة نافعة!';
-    root.appendChild(p);
-    return;
-  }
-  posts.forEach((post,i)=>{
-    const c=document.createElement('article');
-    c.className='card';
-    const who=document.createElement('span');
-    who.className='pill';
-    who.textContent='💎 جوهرة من المجتمع';
-    const body=document.createElement('p');
-    body.className='post';
-    body.textContent=post.body;
-    const actions=document.createElement('div');
-    actions.className='post-actions';
-    const like=document.createElement('button');
-    like.textContent='♡ إعجاب '+post.likes;
-    like.onclick=()=>likePost(i);
-    actions.append(like);
-    c.append(who,body,actions);
-    root.append(c);
+function build() {
+  questions = shuffle(bank).slice(0,10);
+  correct = Array(10).fill(null);
+  el("builder").innerHTML = "";
+  questions.forEach((q,i) => {
+    let box = document.createElement("div");
+    box.className = "question";
+    let title = document.createElement("strong");
+    title.textContent = `السؤال ${i+1}: ${q[0]}`;
+    box.appendChild(title);
+    q[1].forEach((answer,j) => {
+      let label = document.createElement("label");
+      label.className = "option";
+      let radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "correct" + i;
+      radio.onchange = () => correct[i] = j;
+      label.append(radio, document.createTextNode(answer));
+      box.appendChild(label);
+    });
+    el("builder").appendChild(box);
   });
 }
-
-checkUserStatus();
-renderPosts();
+function encode(obj) {
+  return btoa(unescape(encodeURIComponent(JSON.stringify(obj))))
+    .replace(/\+/g,"-")
+    .replace(/\//g,"_")
+    .replace(/=+$/,"");
+}
+function decode(str) {
+  str = str.replace(/-/g,"+").replace(/_/g,"/");
+  while (str.length % 4) str += "=";
+  return JSON.parse(decodeURIComponent(escape(atob(str))));
+}
+function createLink() {
+  owner = el("creator").value.trim();
+  if (!owner) {
+    alert("اكتب اسمك أولًا");
+    return;
+  }
+  let missing = correct.findIndex(x => x === null);
+  if (missing !== -1) {
+    alert("اختر الإجابة الصحيحة للسؤال " + (missing+1));
+    return;
+  }
+  const data = {
+    name: owner,
+    questions: questions.map((q,i) => ({
+      q: q[0],
+      a: q[1],
+      c: correct[i]
+    }))
+  };
+  el("link").value =
+    location.href.split("#")[0] + "#test=" + encode(data);
+  show("share");
+}
+async function copyLink() {
+  try {
+    await navigator.clipboard.writeText(el("link").value);
+    alert("تم نسخ الرابط!");
+  } catch(e) {
+    el("link").select();
+    alert("اضغط مطولًا على الرابط وانسخه.");
+  }
+}
+async function shareLink() {
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: "FriendTest 🧡",
+        text: "اختبر روحك وشوف شحال تعرفني!",
+        url: el("link").value
+      });
+    } else {
+      await copyLink();
+    }
+  } catch(e) {}
+}
+function loadTest(data) {
+  owner = data.name;
+  el("playTitle").textContent = "اختبار " + owner + " 🧡";
+  el("playQuestions").innerHTML = "";
+  answers = Array(10).fill(null);
+  data.questions.forEach((q,i) => {
+    let box = document.createElement("div");
+    box.className = "question";
+    let title = document.createElement("strong");
+    title.textContent = `${i+1}. ${q.q}`;
+    box.appendChild(title);
+    q.a.forEach((a,j) => {
+      let label = document.createElement("label");
+      label.className = "option";
+      let radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "answer" + i;
+      radio.onchange = () => answers[i] = j;
+      label.append(radio, document.createTextNode(a));
+      box.appendChild(label);
+    });
+    el("playQuestions").appendChild(box);
+  });
+  show("play");
+}
+function checkAnswers() {
+  let missing = answers.findIndex(x => x === null);
+  if (missing !== -1) {
+    alert("أجب عن السؤال " + (missing+1));
+    return;
+  }
+  const data = decode(location.hash.slice(6));
+  const score = answers.reduce(
+    (sum,a,i) => sum + (a === data.questions[i].c ? 1 : 0), 0
+  );
+  el("score").textContent = score + "/10";
+  el("message").textContent =
+    score === 10 ? "واو! تعرفه جيدًا جدًا! 🎉" :
+    score >= 7 ? "ممتاز! تعرف عنه الكثير 🧡" :
+    score >= 4 ? "نتيجة جيدة، ما زال هناك المزيد لتكتشفه!" :
+    "يبدو أن عليك معرفة المزيد عنه 😄";
+  show("result");
+}
+async function shareScore() {
+  const text =
+    `جبت ${el("score").textContent} في اختبار FriendTest 🧡!`;
+  try {
+    if (navigator.share) {
+      await navigator.share({title:"FriendTest",text});
+    } else {
+      await navigator.clipboard.writeText(text);
+      alert("تم نسخ النتيجة");
+    }
+  } catch(e) {}
+}
+function boot() {
+  if (location.hash.startsWith("#test=")) {
+    try {
+      const data = decode(location.hash.slice(6));
+      if (!data.questions || data.questions.length !== 10) {
+        throw Error();
+      }
+      loadTest(data);
+    } catch(e) {
+      build();
+      show("create");
+    }
+  } else {
+    build();
+    show("create");
+  }
+}
+boot();
 </script>
 </body>
 </html>
-
