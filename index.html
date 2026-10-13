@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,219 +7,78 @@
 <meta name="theme-color" content="#171412">
 <title>FriendTest 🧡</title>
 <style>
-:root {
-  --bg: #171412;
-  --card: #241E19;
-  --accent: #C65D32;
-  --accent-hover: #E0784D;
-  --cream: #F5EBDD;
-  --muted: #C4B4A4;
-  --border: #49362B;
-  --option: #30261F;
-}
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--cream);
-}
-main {
-  max-width: 650px;
-  margin: auto;
-  padding: 20px 14px;
-}
-header {
-  text-align: center;
-  padding: 22px 15px;
-}
-.logo {
-  font-size: 48px;
-}
-h1 {
-  color: var(--accent-hover);
-  margin: 10px;
-}
-h2 {
-  color: var(--cream);
-}
-p {
-  color: var(--muted);
-  line-height: 1.8;
-}
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 20px;
-  margin: 15px 0;
-  box-shadow: 0 8px 25px #00000030;
-}
-label {
-  display: block;
-  font-weight: bold;
-  margin: 13px 0 7px;
-}
-input {
-  font: inherit;
-  max-width: 100%;
-}
-.name {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #191511;
-  color: var(--cream);
-  outline: none;
-}
-.name:focus {
-  border-color: var(--accent);
-}
-.name::placeholder {
-  color: #9D8A79;
-}
-button {
-  font: inherit;
-  cursor: pointer;
-  border: 0;
-  border-radius: 12px;
-  padding: 13px;
-  font-weight: bold;
-  transition: 0.2s;
-}
-button:active {
-  transform: scale(0.98);
-}
-.primary {
-  background: var(--accent);
-  color: white;
-  width: 100%;
-  margin-top: 12px;
-}
-.primary:hover {
-  background: var(--accent-hover);
-}
-.secondary {
-  background: #3B2B21;
-  color: var(--cream);
-  width: 100%;
-  margin-top: 9px;
-  border: 1px solid var(--border);
-}
-.secondary:hover {
-  background: #493326;
-}
-.question {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 13px;
-  margin: 13px 0;
-  background: #211A15;
-}
-.question strong {
-  display: block;
-  margin-bottom: 10px;
-  line-height: 1.7;
-}
-.option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
-  background: var(--option);
-  border: 1px solid transparent;
-  border-radius: 10px;
-  margin: 7px 0;
-  font-weight: normal;
-  cursor: pointer;
-  color: var(--cream);
-}
-.option:has(input:checked) {
-  border-color: var(--accent);
-  background: #463025;
-}
-.option input {
-  accent-color: var(--accent);
-  flex-shrink: 0;
-}
-.hidden {
-  display: none !important;
-}
-.center {
-  text-align: center;
-}
-.score {
-  font-size: 48px;
-  color: var(--accent-hover);
-  font-weight: bold;
-}
-.small {
-  font-size: 12px;
-  color: var(--muted);
-}
-#link {
-  direction: ltr;
-  text-align: left;
-}
-@media (max-width: 400px) {
-  main {
-    padding: 12px 10px;
-  }
-  .card {
-    padding: 15px;
-  }
-}
+:root{--bg:#171412;--card:#241E19;--accent:#C65D32;--hover:#E0784D;--cream:#F5EBDD;--muted:#C4B4A4;--border:#49362B;--option:#30261F}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--cream)}
+main{max-width:650px;margin:auto;padding:20px 14px}
+header{text-align:center;padding:22px 15px}
+.logo{font-size:48px}
+h1{color:var(--hover);margin:10px}
+p{color:var(--muted);line-height:1.8}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:20px;margin:15px 0;box-shadow:0 8px 25px #0003}
+label{display:block;font-weight:bold;margin:13px 0 7px}
+input{font:inherit;max-width:100%}
+.name{width:100%;padding:13px;border:1px solid var(--border);border-radius:12px;background:#191511;color:var(--cream)}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:13px;font-weight:bold}
+.primary{background:var(--accent);color:white;width:100%;margin-top:12px}
+.secondary{background:#3B2B21;color:var(--cream);width:100%;margin-top:9px;border:1px solid var(--border)}
+.question{border:1px solid var(--border);border-radius:14px;padding:13px;margin:13px 0;background:#211A15}
+.question strong{display:block;margin-bottom:10px;line-height:1.7}
+.option{display:flex;align-items:center;gap:10px;padding:12px;background:var(--option);border:1px solid transparent;border-radius:10px;margin:7px 0;font-weight:normal;cursor:pointer}
+.option:has(input:checked){border-color:var(--accent);background:#463025}
+.option input{accent-color:var(--accent);flex-shrink:0}
+.hidden{display:none!important}
+.center{text-align:center}
+.score{font-size:48px;color:var(--hover);font-weight:bold}
+.small{font-size:12px;color:var(--muted)}
+#link{direction:ltr;text-align:left}
+@media(max-width:400px){main{padding:12px 10px}.card{padding:15px}}
 </style>
 </head>
 <body>
 <main>
 <header>
-  <div class="logo">🧡</div>
-  <h1>FriendTest</h1>
-  <p>دير تاست و تاستي صحابك! 🤎</p>
+<div class="logo">🧡</div>
+<h1>FriendTest</h1>
+<p>دير تاست و تاستي صحابك! 🤎</p>
 </header>
+
 <section class="card" id="create">
-  <h2>✨ اخدم الاختبار</h2>
-  <label for="creator">اسمك</label>
-  <input class="name" id="creator" placeholder="اكتب اسمك">
-  <div id="builder"></div>
-  <button class="primary" onclick="createLink()">
-    إنشاء رابط الاختبار 🔗
-  </button>
+<h2>✨ اخدم الاختبار</h2>
+<label for="creator">اسمك</label>
+<input class="name" id="creator" placeholder="اكتب اسمك">
+<div id="builder"></div>
+<button class="primary" onclick="createLink()">إنشاء رابط الاختبار 🔗</button>
 </section>
+
 <section class="card hidden" id="share">
-  <h2>🎉 كملت!</h2>
-  <p>كوبي الرابط وابعثه لصاحبك.</p>
-  <input class="name" id="link" readonly>
-  <button class="primary" onclick="copyLink()">نسخ الرابط 📋</button>
-  <button class="secondary" onclick="shareLink()">مشاركة الرابط ↗</button>
-  <p class="small">رابط الاختبار يحتوي على الأسئلة وإجاباتك الصحيحة.</p>
-  <p> موقع مزالو قيد التطوير مع لوقت نزيد نحسنو</p>
-  <button class="secondary" onclick="location.href=location.pathname">
-    إنشاء اختبار جديد
-  </button>
+<h2>🎉 كملت!</h2>
+<p>كوبي الرابط وابعثه لصاحبك.</p>
+<input class="name" id="link" readonly>
+<button class="primary" onclick="copyLink()">نسخ الرابط 📋</button>
+<button class="secondary" onclick="shareLink()">مشاركة الرابط ↗</button>
+<p class="small">ضغطنا بيانات الاختبار لتقليل طول الرابط.</p>
+<button class="secondary" onclick="newTest()">إنشاء اختبار جديد</button>
 </section>
+
 <section class="card hidden" id="play">
-  <h2 id="playTitle">FriendTest 🧡</h2>
-  <p>اختار الإجابة الصحيحة عن صاحبك!</p>
-  <div id="playQuestions"></div>
-  <button class="primary" onclick="checkAnswers()">شوف النتيجة 🏆</button>
+<h2 id="playTitle">FriendTest 🧡</h2>
+<p>اختار الإجابة الصحيحة عن صاحبك!</p>
+<div id="playQuestions"></div>
+<button class="primary" onclick="checkAnswers()">شوف النتيجة 🏆</button>
 </section>
+
 <section class="card hidden center" id="result">
-  <h2>نتيجتك 🧡</h2>
-  <div class="score" id="score">0/10</div>
-  <p id="message"></p>
-  <button class="primary" onclick="shareScore()">مشاركة النتيجة</button>
-  <button class="secondary" onclick="location.href=location.pathname">
-    اختبار جديد
-  </button>
+<h2>نتيجتك 🧡</h2>
+<div class="score" id="score">0/10</div>
+<p id="message"></p>
+<button class="primary" onclick="shareScore()">مشاركة النتيجة</button>
+<button class="secondary" onclick="newTest()">اختبار جديد</button>
 </section>
 </main>
+
 <script>
-const bank = [
+const bank=[
 ["لونك المفضل؟",["الأزرق","الأسود","الأحمر","الأخضر"]],
 ["لعبتك المفضلة؟",["Minecraft","Blood Strike","Free Fire","كرة القدم"]],
 ["أكلك المفضل؟",["بيتزا","برغر","شاورما","مكرونة"]],
@@ -240,173 +100,199 @@ const bank = [
 ["وش أكثر شيء تقدّره؟",["الثقة","الاحترام","المرح","المساعدة"]],
 ["أي هدية تفضل؟",["شيء مفيد","هدية شخصية","رسالة جميلة","مفاجأة"]]
 ];
-let questions = [], correct = [], answers = [], owner = "";
-function el(id) {
-  return document.getElementById(id);
+
+let questions=[],correct=[],answers=[],currentData=null;
+
+function el(id){return document.getElementById(id)}
+function show(id){
+["create","share","play","result"].forEach(x=>el(x).classList.add("hidden"));
+el(id).classList.remove("hidden");
+window.scrollTo(0,0);
 }
-function hideAll() {
-  ["create","share","play","result"].forEach(id =>
-    el(id).classList.add("hidden")
-  );
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+
+function build(){
+questions=shuffle(bank).slice(0,10);
+correct=Array(10).fill(null);
+el("builder").innerHTML="";
+questions.forEach((q,i)=>{
+const box=document.createElement("div");
+box.className="question";
+const title=document.createElement("strong");
+title.textContent=`السؤال ${i+1}: ${q[0]}`;
+box.appendChild(title);
+q[1].forEach((answer,j)=>{
+const label=document.createElement("label");
+label.className="option";
+const radio=document.createElement("input");
+radio.type="radio";
+radio.name="correct"+i;
+radio.onchange=()=>correct[i]=j;
+label.append(radio,document.createTextNode(answer));
+box.appendChild(label);
+});
+el("builder").appendChild(box);
+});
 }
-function show(id) {
-  hideAll();
-  el(id).classList.remove("hidden");
-  window.scrollTo(0,0);
+
+// ترميز متوافق مع روابط النسخة القديمة
+function encode(obj){
+return btoa(unescape(encodeURIComponent(JSON.stringify(obj))))
+.replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 }
-function shuffle(a) {
-  return [...a].sort(() => Math.random() - 0.5);
+function decode(str){
+str=str.replace(/-/g,"+").replace(/_/g,"/");
+while(str.length%4)str+="=";
+return JSON.parse(decodeURIComponent(escape(atob(str))));
 }
-function build() {
-  questions = shuffle(bank).slice(0,10);
-  correct = Array(10).fill(null);
-  el("builder").innerHTML = "";
-  questions.forEach((q,i) => {
-    let box = document.createElement("div");
-    box.className = "question";
-    let title = document.createElement("strong");
-    title.textContent = `السؤال ${i+1}: ${q[0]}`;
-    box.appendChild(title);
-    q[1].forEach((answer,j) => {
-      let label = document.createElement("label");
-      label.className = "option";
-      let radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = "correct" + i;
-      radio.onchange = () => correct[i] = j;
-      label.append(radio, document.createTextNode(answer));
-      box.appendChild(label);
-    });
-    el("builder").appendChild(box);
-  });
+function bytesToBase64(bytes){
+let binary="";
+for(let i=0;i<bytes.length;i++)binary+=String.fromCharCode(bytes[i]);
+return btoa(binary).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 }
-function encode(obj) {
-  return btoa(unescape(encodeURIComponent(JSON.stringify(obj))))
-    .replace(/\+/g,"-")
-    .replace(/\//g,"_")
-    .replace(/=+$/,"");
+function base64ToBytes(str){
+str=str.replace(/-/g,"+").replace(/_/g,"/");
+while(str.length%4)str+="=";
+const b=atob(str),out=new Uint8Array(b.length);
+for(let i=0;i<b.length;i++)out[i]=b.charCodeAt(i);
+return out;
 }
-function decode(str) {
-  str = str.replace(/-/g,"+").replace(/_/g,"/");
-  while (str.length % 4) str += "=";
-  return JSON.parse(decodeURIComponent(escape(atob(str))));
+
+// ضغط GZIP واختيار أقصر ترميز
+async function encodeCompact(data){
+const legacy=encode(data);
+if(typeof CompressionStream==="undefined")return "j"+legacy;
+try{
+const stream=new Blob([new TextEncoder().encode(JSON.stringify(data))])
+.stream().pipeThrough(new CompressionStream("gzip"));
+const compressed=bytesToBase64(
+new Uint8Array(await new Response(stream).arrayBuffer())
+);
+return compressed.length<legacy.length?"z"+compressed:"j"+legacy;
+}catch(e){return "j"+legacy}
 }
-function createLink() {
-  owner = el("creator").value.trim();
-  if (!owner) {
-    alert("اكتب اسمك أولًا");
-    return;
-  }
-  let missing = correct.findIndex(x => x === null);
-  if (missing !== -1) {
-    alert("اختر الإجابة الصحيحة للسؤال " + (missing+1));
-    return;
-  }
-  const data = {
-    name: owner,
-    questions: questions.map((q,i) => ({
-      q: q[0],
-      a: q[1],
-      c: correct[i]
-    }))
-  };
-  el("link").value =
-    location.href.split("#")[0] + "#test=" + encode(data);
-  show("share");
+async function decodeCompact(str){
+if(str.startsWith("z")){
+if(typeof DecompressionStream==="undefined")throw Error("Unsupported");
+const stream=new Blob([base64ToBytes(str.slice(1))]).stream()
+.pipeThrough(new DecompressionStream("gzip"));
+return JSON.parse(await new Response(stream).text());
 }
-async function copyLink() {
-  try {
-    await navigator.clipboard.writeText(el("link").value);
-    alert("تم نسخ الرابط!");
-  } catch(e) {
-    el("link").select();
-    alert("اضغط مطولًا على الرابط وانسخه.");
-  }
+return decode(str.startsWith("j")?str.slice(1):str);
 }
-async function shareLink() {
-  try {
-    if (navigator.share) {
-      await navigator.share({
-        title: "FriendTest 🧡",
-        text: "اختبر روحك وشوف شحال تعرفني!",
-        url: el("link").value
-      });
-    } else {
-      await copyLink();
-    }
-  } catch(e) {}
+
+async function createLink(){
+const name=el("creator").value.trim();
+if(!name){alert("اكتب اسمك أولًا");return}
+const missing=correct.findIndex(x=>x===null);
+if(missing!==-1){alert("اختر الإجابة الصحيحة للسؤال "+(missing+1));return}
+const data={
+name,
+questions:questions.map((q,i)=>({q:q[0],a:q[1],c:correct[i]}))
+};
+try{
+el("link").value=location.href.split("#")[0]+"#test="+await encodeCompact(data);
+show("share");
+}catch(e){alert("تعذر إنشاء الرابط. حاول مرة أخرى.")}
 }
-function loadTest(data) {
-  owner = data.name;
-  el("playTitle").textContent = "اختبار " + owner + " 🧡";
-  el("playQuestions").innerHTML = "";
-  answers = Array(10).fill(null);
-  data.questions.forEach((q,i) => {
-    let box = document.createElement("div");
-    box.className = "question";
-    let title = document.createElement("strong");
-    title.textContent = `${i+1}. ${q.q}`;
-    box.appendChild(title);
-    q.a.forEach((a,j) => {
-      let label = document.createElement("label");
-      label.className = "option";
-      let radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = "answer" + i;
-      radio.onchange = () => answers[i] = j;
-      label.append(radio, document.createTextNode(a));
-      box.appendChild(label);
-    });
-    el("playQuestions").appendChild(box);
-  });
-  show("play");
+
+async function copyLink(){
+try{
+await navigator.clipboard.writeText(el("link").value);
+alert("تم نسخ الرابط!");
+}catch(e){
+el("link").select();
+el("link").setSelectionRange(0,99999);
+alert("اضغط مطولًا على الرابط ثم اختر نسخ.");
 }
-function checkAnswers() {
-  let missing = answers.findIndex(x => x === null);
-  if (missing !== -1) {
-    alert("أجب عن السؤال " + (missing+1));
-    return;
-  }
-  const data = decode(location.hash.slice(6));
-  const score = answers.reduce(
-    (sum,a,i) => sum + (a === data.questions[i].c ? 1 : 0), 0
-  );
-  el("score").textContent = score + "/10";
-  el("message").textContent =
-    score === 10 ? "واو! تعرفه جيدًا جدًا! 🎉" :
-    score >= 7 ? "ممتاز! تعرف عنه الكثير 🧡" :
-    score >= 4 ? "نتيجة جيدة، ما زال هناك المزيد لتكتشفه!" :
-    "يبدو أن عليك معرفة المزيد عنه 😄";
-  show("result");
 }
-async function shareScore() {
-  const text =
-    `جبت ${el("score").textContent} في اختبار FriendTest 🧡!`;
-  try {
-    if (navigator.share) {
-      await navigator.share({title:"FriendTest",text});
-    } else {
-      await navigator.clipboard.writeText(text);
-      alert("تم نسخ النتيجة");
-    }
-  } catch(e) {}
+async function shareLink(){
+try{
+if(navigator.share){
+await navigator.share({
+title:"FriendTest 🧡",
+text:"اختبر روحك وشوف شحال تعرفني!",
+url:el("link").value
+});
+}else await copyLink();
+}catch(e){}
 }
-function boot() {
-  if (location.hash.startsWith("#test=")) {
-    try {
-      const data = decode(location.hash.slice(6));
-      if (!data.questions || data.questions.length !== 10) {
-        throw Error();
-      }
-      loadTest(data);
-    } catch(e) {
-      build();
-      show("create");
-    }
-  } else {
-    build();
-    show("create");
-  }
+
+function loadTest(data){
+currentData=data;
+el("playTitle").textContent="اختبار "+data.name+" 🧡";
+el("playQuestions").innerHTML="";
+answers=Array(data.questions.length).fill(null);
+data.questions.forEach((q,i)=>{
+const box=document.createElement("div");
+box.className="question";
+const title=document.createElement("strong");
+title.textContent=`${i+1}. ${q.q}`;
+box.appendChild(title);
+q.a.forEach((answer,j)=>{
+const label=document.createElement("label");
+label.className="option";
+const radio=document.createElement("input");
+radio.type="radio";
+radio.name="answer"+i;
+radio.onchange=()=>answers[i]=j;
+label.append(radio,document.createTextNode(answer));
+box.appendChild(label);
+});
+el("playQuestions").appendChild(box);
+});
+show("play");
+}
+
+function checkAnswers(){
+const missing=answers.findIndex(x=>x===null);
+if(missing!==-1){alert("أجب عن السؤال "+(missing+1));return}
+if(!currentData)return;
+const score=answers.reduce((sum,a,i)=>
+sum+(a===currentData.questions[i].c?1:0),0);
+el("score").textContent=score+"/"+currentData.questions.length;
+el("message").textContent=
+score===10?"واو! تعرفه جيدًا جدًا! 🎉":
+score>=7?"ممتاز! تعرف عنه الكثير 🧡":
+score>=4?"نتيجة جيدة، ما زال هناك المزيد لتكتشفه!":
+"يبدو أن عليك معرفة المزيد عنه 😄";
+show("result");
+}
+
+async function shareScore(){
+const text=`جبت ${el("score").textContent} في اختبار FriendTest 🧡!`;
+try{
+if(navigator.share)await navigator.share({title:"FriendTest",text});
+else{
+await navigator.clipboard.writeText(text);
+alert("تم نسخ النتيجة");
+}
+}catch(e){}
+}
+function newTest(){
+history.replaceState(null,"",location.pathname+location.search);
+currentData=null;
+el("creator").value="";
+build();
+show("create");
+}
+
+async function boot(){
+if(location.hash.startsWith("#test=")){
+try{
+const data=await decodeCompact(location.hash.slice(6));
+if(!data.questions||data.questions.length!==10||
+!data.questions.every(q=>q&&typeof q.q==="string"&&
+Array.isArray(q.a)&&Number.isInteger(q.c)&&q.c>=0&&q.c<q.a.length))
+throw Error("Invalid test");
+loadTest(data);
+}catch(e){
+build();show("create");
+alert("تعذر فتح الاختبار. تأكد أن الرابط كامل.");
+}
+}else{
+build();show("create");
+}
 }
 boot();
 </script>
